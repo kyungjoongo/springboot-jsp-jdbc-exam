@@ -5,6 +5,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 
+
+/**
+ * 
+ * @author kyungjoon
+ *
+ */
 @SpringBootApplication
 public class Demo1Application extends SpringBootServletInitializer {
     @Override
