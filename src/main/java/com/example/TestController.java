@@ -34,6 +34,16 @@ public class TestController {
         return "Greetings from Spring Boot!";
     }
     
+    
+    @RequestMapping("/insertTest2")
+    public String insertTest2() {
+        blogDao.insertNewContent("고경준은 관연천재님이신가요----------1");
+        
+        
+        blogDao.insertNewContent("고경준은 관연천재님이신가요?---------2?");
+        return "Greetings from Spring Boot!";
+    }
+    
   
  
  
