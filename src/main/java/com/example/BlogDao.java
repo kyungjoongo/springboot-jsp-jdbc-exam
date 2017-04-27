@@ -1,5 +1,7 @@
 package com.example;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -17,5 +19,11 @@ public class BlogDao {
     
     public void insertNewContentTest(String content) {
         template.update("INSERT INTO blogs(content) VALUES(?)", content);
+    }
+    
+    public List selecContents(String content) {
+        List arrList = template.queryForList("select * from blogs");
+        
+        return arrList;
     }
 }
