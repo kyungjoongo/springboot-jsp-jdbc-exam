@@ -28,6 +28,13 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile("org.springframework:spring-jdbc:+")
   	compile("commons-dbcp:commons-dbcp:1.4")
+  	
+  	compile ('pl.allegro.tech.boot:handlebars-spring-boot-starter:0.2.0')
+  	
+  	compile("org.springframework.boot:spring-boot-devtools")
+
+	//compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '1.5.3.RELEASE'
+  	 
   	//compile("mysql:mysql-connector-java:5.0.8")
 	//runtime('mysql:mysql-connector-java')
 	

@@ -1,0 +1,42 @@
+package com.example;
+
+import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicLong;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+@Controller
+
+public class HelloWorldController {
+
+	private static final String template = "Hello, %s!";
+	private final AtomicLong counter = new AtomicLong();
+
+	
+	@RequestMapping("/hello-world")
+	public @ResponseBody Greeting sayHello(	@RequestParam(value = "name", required = false, defaultValue = "Stranger") String name) {
+		
+		Greeting greeting = new Greeting(counter.incrementAndGet(), String.format(template, name));
+		//id, contents
+		return greeting;
+	}
+	
+	
+	@RequestMapping("resposeTest001")
+	public @ResponseBody HashMap resposeTest001(	@RequestParam(value = "name", required = false, defaultValue = "Stranger") String name) {
+		
+		HashMap vmap=new HashMap();
+		
+		vmap.put("kyungjoon", "1114");
+		vmap.put("kyungjoon2", "11142");
+		vmap.put("kyungjoon3", "1114333");
+		
+		//id, contents
+		return vmap;
+	}
+
+}

@@ -19,6 +19,8 @@ public class Demo1Application extends SpringBootServletInitializer {
     }
 
     public static void main(String[] args) throws Exception {
+    	
+    	System.setProperty("spring.devtools.restart.enabled", "true");
         SpringApplication.run(Demo1Application.class, args);
     }
 }
