@@ -1,4 +1,4 @@
-package com.example;
+package com.example.controller;
 
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicLong;
@@ -7,9 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import com.example.model.Greeting;
 
 @Controller
-public class HelloWorldController {
+public class RestController {
 
 	private static final String template = "Hello, %s!";
 	private final AtomicLong counter = new AtomicLong();
