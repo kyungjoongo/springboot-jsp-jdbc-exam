@@ -5,7 +5,6 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -27,9 +26,9 @@ public class HelloWorldController {
 	
 	
 	@RequestMapping("resposeTest001")
-	public @ResponseBody HashMap resposeTest001(	@RequestParam(value = "name", required = false, defaultValue = "Stranger") String name) {
+	public @ResponseBody HashMap<String, String> resposeTest001(	@RequestParam(value = "name", required = false, defaultValue = "Stranger") String name) {
 		
-		HashMap vmap=new HashMap();
+		HashMap<String, String> vmap=new HashMap<String, String>();
 		
 		vmap.put("kyungjoon", "1114");
 		vmap.put("kyungjoon2", "11142");
