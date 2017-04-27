@@ -29,7 +29,9 @@ public class RestController {
 	public @ResponseBody HashMap<String, String> resposeTest001(	@RequestParam(value = "name", required = false, defaultValue = "Stranger") String name) {
 		
 		HashMap<String, String> vmap=new HashMap<String, String>();
-		
+
+
+
 		vmap.put("kyungjoon", "1114");
 		vmap.put("kyungjoon2", "11142");
 		vmap.put("kyungjoon3", "1114333");
