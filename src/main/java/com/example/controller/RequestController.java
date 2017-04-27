@@ -21,6 +21,9 @@ public class RequestController {
 		model.addAttribute("kyungjoon", "고경준은 천재다");
 		blogDao.insertNewContent("고경준은 genius the genius33333");
 		return "hello";
+		
+		
+		
 	}
 
 	@RequestMapping("/kyungjoon22")
