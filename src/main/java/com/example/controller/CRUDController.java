@@ -75,7 +75,6 @@ public class CRUDController {
     	
     	model.addAttribute("arrList",arrList);
 		
-		
 		return "selectTest";
 	}
 

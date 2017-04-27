@@ -9,27 +9,29 @@
     <script>
         // Shorthand for $( document ).ready()
         $(function () {
-            alert("sdlfksdlfksdlfk");
+            /*   alert("sdlfksdlfksdlfk");
 
 
-            alert("Sdflksdflksdlfksldkflk!!2222222222");
+               alert("Sdflksdflksdlfksldkflk!!2222222222");
+   */
         });
     </script>
 </head>
 <body>
 
 
-<#if 'test' == 'test111'>
-같아요 같아
-<#elseif 'test' =='test'>
-2번째입니다sdlfksdlfksdfl
-<#else>
-같지않습니다sdlfksdlfksdlfklsdkflk
-</#if>
+    <#if 'test' == 'test111'>
+    		같아요 같아
+    <#elseif 'test' =='test'>
+    	2번째입니다sdlfksdlfksdfl
+    <#else>
+    	같지않습니다sdlfksdlfksdlfklsdkflk
+    </#if>
 
 
-<#list arrList as arrOne>
-<p>${arrOne.content}
+    <#list arrList as arrOne>
+         <p>${arrOne.content}
+         	${arrOne.id}
 	</#list>
 
 
