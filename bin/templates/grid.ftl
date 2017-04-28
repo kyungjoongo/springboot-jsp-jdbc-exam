@@ -63,7 +63,7 @@ $("#list2").jqGrid('navGrid','#pager2',{edit:false,add:false,del:false});
 </head>
 <body>
 
-	dfasfasdfasdfasdf
+	dfasfasdfasdfasdfp---------------------------jkjkjkjkjkjkjkj
 	<table id="list2"></table>
 	<div id=pager2></div>
 </body>
