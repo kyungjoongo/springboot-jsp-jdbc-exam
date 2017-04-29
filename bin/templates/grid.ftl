@@ -4,15 +4,15 @@
 <meta charset="UTF-8">
 <title>Hello grid!!!!!!!!</title>
 
-<link href="/jquery-ui-1.12.1.green2/jquery-ui.theme.css" rel="stylesheet" />
-<link href="/jquery-ui-1.12.1.green2/jquery-ui.css" rel="stylesheet" />
+<link href="/jquery-ui-1.12.1.custom/jquery-ui.theme.css" rel="stylesheet" />
+<link href="/jquery-ui-1.12.1.custom/jquery-ui.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 <!-- jqGrid-4.6.0 -->
 <link href="/jquery.jqGrid-4.6.0/css/ui.jqgrid.css" rel="stylesheet" />
 <script type="text/javascript" src="/jquery.jqGrid-4.6.0/js/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="/jquery.jqGrid-4.6.0/js/jquery.jqGrid.min.js"></script>
 <script type="text/javascript" src="/jquery.jqGrid-4.6.0/js/i18n/grid.locale-kr.js"></script>
-<script type="text/javascript" src="/jquery-ui-1.12.1.green2/jquery-ui.js"></script>
+<script type="text/javascript" src="/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
 <!-- bootstrap -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
@@ -52,26 +52,32 @@ $(function() {
 	$("#changeTheme").on( "click", function() {
 
 		loadjscssfile("/jquery-ui-1.12.1.green/jquery-ui.theme.css", "css") ////dy
+		
+		loadjscssfile("/jquery.jqGrid-4.6.0/css/ui.jqgrid.css", "css") ////dy
+		
 	});
 	
 	
 	$("#changeTheme2").on( "click", function() {
 
 		loadjscssfile("/jquery-ui-1.12.1.green2/jquery-ui.theme.css", "css") ////dy
+		loadjscssfile("/jquery.jqGrid-4.6.0/css/ui.jqgrid.css", "css") ////dy
 	});
 	
 
 	$("#changeTheme3").on( "click", function() {
 
-		loadjscssfile("/jquery-ui-1.12.1.custom/jquery-ui.theme.css", "css") ////dy
+		loadjscssfile("/jquery-ui-1.12.1.custom/jquery-ui.theme.css", "css") 
+		loadjscssfile("/jquery.jqGrid-4.6.0/css/ui.jqgrid.css", "css") ////dy
 	});
 	
 	$("#changeTheme4").on( "click", function() {
 
 		loadjscssfile("/jquery-ui-1.12.1.red/jquery-ui.theme.css", "css") ////dy
+		loadjscssfile("/jquery.jqGrid-4.6.0/css/ui.jqgrid.css", "css") ////dy
 	});
 	
-	$('#selectTheme').change(function(){
+	/* $('#selectTheme').change(function(){
 		
 	         var themeName = $('#selectTheme option:selected').val() ;
 	         
@@ -91,7 +97,8 @@ $(function() {
 	        	 loadjscssfile("/jquery-ui-1.12.1.red/jquery-ui.theme.css", "css") ////dy
 	         }
 	});
-	
+	 */
+	 
 	
 	$("#list2").jqGrid({
 	   	url:'/getGridData',
@@ -99,7 +106,7 @@ $(function() {
 	   	colNames:['id','content'],
 	   	colModel:[
 	   		{name:'id',index:'id', width:500,sortable:true, sorttype: "number"},
-	   		{name:'content', width:500,sortable:true},
+	   		{name:'content', width:500,sortable:true, sorttype: "text"},
 	   	],
 	   	rowNum:10,
 	   	height:'auto',
@@ -121,11 +128,40 @@ $(function() {
 	
 	$('#list2').jqGrid('setGridParam', {sortorder: 'desc'});
 	$('#list2').jqGrid('sortGrid', 'id');
-
+	//$("#list2").jqGrid('filterToolbar',{searchOperators : true});
+	
+	
+	$("#list2").jqGrid('navGrid','#pager2',
+			{edit:false,add:false,del:false,search: true},{},{},{},
+			{
+				
+				multipleSearch:false, multipleGroup:false, showQuery: false,
+				sopt: ['cn'],
+                defaultSearch: 'cn',
+                caption: "Search",
+                //closeAfterSearch: true,
+                //closeOnEscape: true,
+                modal :false,
+                left: 400,
+                top: 400,
+                searchOnEnter : true
+			
+			
+			} 
+			
+			
+			
+			
+			);
+	
+	
+	
+	 
 
 });
 
-$("#list2").jqGrid('navGrid','#pager2',{edit:false,add:false,del:false});
+
+
 
 </script>
 
@@ -136,7 +172,7 @@ $("#list2").jqGrid('navGrid','#pager2',{edit:false,add:false,del:false});
 </head>
 <body>
  <div class="container">
-	dfasfasdfasdfasdfp---------------------------jkjkjkjkjkjkjkj
+	dfasfasdfasdfasdfp---------------------------jkjkjkjkjkjkjkj333333333333333333333333
 	<table id="list2"></table>
 	<div id=pager2></div>
 	<input class="btn btn-outline-info btn-sm" type="button" value="green2" id="changeTheme2">
@@ -145,13 +181,13 @@ $("#list2").jqGrid('navGrid','#pager2',{edit:false,add:false,del:false});
 	<input class="btn btn-outline-info btn-sm" type="button" value="red" id="changeTheme4">
     <!-- <button type="button" class="btn btn-primary">Primary</button> -->
 
-	
+	<!-- 
 	<select id="selectTheme">
 		<option id="green2">green2</option>
 		<option id="green">green</option>
 		<option id="gray">gray</option>
 		<option id="red">red</option>
-	</select>
+	</select> -->
 	
 	<!-- <div class="dropdown">
 	  <button class="btn btn-default dropdown-toggle btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
