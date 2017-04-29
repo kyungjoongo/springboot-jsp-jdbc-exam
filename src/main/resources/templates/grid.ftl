@@ -12,12 +12,26 @@
 
 <link href="/jquery-ui-1.12.1.green2/jquery-ui.theme.css" rel="stylesheet" />
 <link href="/jquery-ui-1.12.1.green2/jquery-ui.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 
-<link href="/jqGrid-4.4.3/css/ui.jqgrid.css" rel="stylesheet" />
-<script type="text/javascript" src="/jqGrid-4.4.3/js/jquery-1.7.2.min.js"></script>
+<!-- <link href="/jqGrid-4.4.3/css/ui.jqgrid.css" rel="stylesheet" /> -->
+<!-- <script type="text/javascript" src="/jqGrid-4.4.3/js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="/jqGrid-4.4.3/js/jquery.jqGrid.min.js"></script>
-<script type="text/javascript" src="/jqGrid-4.4.3/js/i18n/grid.locale-kr.js"></script>
+<script type="text/javascript" src="/jqGrid-4.4.3/js/i18n/grid.locale-kr.js"></script> -->
+
+<!-- jqGrid-4.6.0 -->
+<link href="/jquery.jqGrid-4.6.0/css/ui.jqgrid.css" rel="stylesheet" />
+<script type="text/javascript" src="/jquery.jqGrid-4.6.0/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="/jquery.jqGrid-4.6.0/js/jquery.jqGrid.min.js"></script>
+<script type="text/javascript" src="/jquery.jqGrid-4.6.0/js/i18n/grid.locale-kr.js"></script>
+
 <script type="text/javascript" src="/jquery-ui-1.12.1.green2/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+<!-- boostrap -->
+<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 
 
 <script>
@@ -44,6 +58,13 @@ function loadjscssfile(filename, filetype){
 
 
 $(function() {
+	
+	 $(".dropdown-menu li a").click(function(){
+
+	      $(".btn:first-child").text($(this).text());
+	      $(".btn:first-child").val($(this).text());
+
+	   });
 	
 	$("#changeTheme").on( "click", function() {
 
@@ -89,9 +110,6 @@ $(function() {
 	});
 	
 	
-	
-	
-	
 	$("#list2").jqGrid({
 	   	url:'/getGridData',
 		datatype: "json",
@@ -134,14 +152,16 @@ $("#list2").jqGrid('navGrid','#pager2',{edit:false,add:false,del:false});
 
 </head>
 <body>
-
+ <div class="container">
 	dfasfasdfasdfasdfp---------------------------jkjkjkjkjkjkjkj
 	<table id="list2"></table>
 	<div id=pager2></div>
-	<input type="button" value="green2" id="changeTheme2">
-	<input type="button" value="green" id="changeTheme">
-	<input type="button" value="gray" id="changeTheme3">
-	<input type="button" value="red" id="changeTheme4">
+	<input class="btn btn-outline-info btn-sm" type="button" value="green2" id="changeTheme2">
+	<input class="btn btn-outline-info btn-sm" type="button" value="green" id="changeTheme">
+	<input class="btn btn-outline-info btn-sm" type="button" value="gray" id="changeTheme3">
+	<input class="btn btn-outline-info btn-sm" type="button" value="red" id="changeTheme4">
+    <!-- <button type="button" class="btn btn-primary">Primary</button> -->
+
 	
 	<select id="selectTheme">
 		<option id="green2">green2</option>
@@ -150,5 +170,21 @@ $("#list2").jqGrid('navGrid','#pager2',{edit:false,add:false,del:false});
 		<option id="red">red</option>
 	</select>
 	
+	<!-- <div class="dropdown">
+	  <button class="btn btn-default dropdown-toggle btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+	    selectTheme
+	    <span class="caret"></span>
+	  </button>
+	  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+	    <li><a href="#" class="dropdownItem" data-value="green2">green2</a></li>
+	    <li><a href="#" class="dropdownItem" data-value="green">green</a></li>
+	    <li><a href="#" class="dropdownItem" data-value="gray">gray</a></li>
+	    <li><a href="#" class="dropdownItem" data-value="red">red</a></li>
+	    
+	  </ul>
+	</div>
+	 -->
+	
+</div>
 </body>
 </html>
