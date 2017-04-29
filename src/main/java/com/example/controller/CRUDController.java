@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.dao.BlogDao;
+import com.example.dao.ExampleDAO;
 
 
 
@@ -24,6 +26,9 @@ public class CRUDController {
  
     @Autowired
     private BlogDao blogDao;
+    
+    @Autowired
+	private ExampleDAO exampleDao;
  
     @RequestMapping("/")
     public String index() {
@@ -77,6 +82,22 @@ public class CRUDController {
 		
 		return "selectTest";
 	}
+    
+    
+    @RequestMapping("/mybatisTest")
+  	public String mybatisTest(Model model,	@RequestParam(value = "name", required = false, defaultValue = "Stranger") String name) {
+  		
+      	
+    	List arrList = exampleDao.getBlog();
+    	
+    	System.out.println("list-->:"+ arrList.toString());
+  		
+  		return "grid";
+  	}
+
+
+    
+  
 
     
   
