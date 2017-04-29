@@ -2,7 +2,7 @@
 <mapper namespace="com.example.mapper.ExampleMapper">
 
 
-	<select id="getBlog" resultType="com.example.model.Blog">
+	<select id="getBlog" resultType="com.kyungjoon.model.Blog">
 
 		select * from blogs order by id desc
 	</select>
