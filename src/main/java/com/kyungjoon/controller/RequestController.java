@@ -38,6 +38,19 @@ public class RequestController {
 	}
 	
 	
+	@RequestMapping("/graph")
+	public String graph(Model model,
+			@RequestParam(value = "name", required = false, defaultValue = "World") String name) {
+		model.addAttribute("name", "고경준천재지~~~~~~~~");
+
+		// sdlkfsdlkflsdklfkdslfklkdsf
+
+		return "graph";
+	}
+	
+	
+	
+	
 	
 	
 }

@@ -32,7 +32,7 @@ public class ExampleDAO {
 	public List getBlog() {
 
 		List<Blog> arrList = sqlSession.selectList("com.kyungjoon.mapper.ExampleMapper.getBlog");
-
+/*
 		for (Blog blog : arrList) {
 			
 			String id = blog.getId();
@@ -41,7 +41,7 @@ public class ExampleDAO {
 			System.out.println("name:"+ name);
 			System.out.println("id:"+ id);
 
-		}
+		}*/
 
 		return arrList;
 	}
