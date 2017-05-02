@@ -1,6 +1,5 @@
 package com.kyungjoon.controller;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +48,9 @@ public class CRUDController {
     
     @RequestMapping("/insertTest2")
     public String insertTest2() {
+        blogDao.insertNewContent("고경준은 관연천재님이신가요----------1");
+        blogDao.insertNewContent("고경준은 관연천재님이신가요----------1");
+        blogDao.insertNewContent("고경준은 관연천재님이신가요----------1");
         blogDao.insertNewContent("고경준은 관연천재님이신가요----------1");
         
         
