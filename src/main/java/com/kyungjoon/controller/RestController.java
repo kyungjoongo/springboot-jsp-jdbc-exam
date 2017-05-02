@@ -75,5 +75,18 @@ public class RestController {
 
 		return "grid";
 	}
+	
+	@RequestMapping("/getGraphData")
+	public @ResponseBody String getGraphData()
+			
+			throws JsonGenerationException, JsonMappingException, IOException {
+
+		List arrList = blogDao.getGraphData();
+
+		/*Map<String, Object> map = new HashMap<String, Object>();
+		map.put("result", arrList);*/
+		return JSONValue.toJSONString(arrList);
+
+	}
 
 }

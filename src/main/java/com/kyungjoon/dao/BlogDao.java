@@ -26,4 +26,14 @@ public class BlogDao {
         
         return arrList;
     }
+    
+    
+    public List getGraphData() {
+        List arrList = template.queryForList("select * from test1");
+        
+        return arrList;
+    }
+    
+    
+    
 }
