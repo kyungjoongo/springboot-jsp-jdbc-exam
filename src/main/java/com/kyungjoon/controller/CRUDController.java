@@ -52,22 +52,6 @@ public class CRUDController {
         blogDao.insertNewContent("고경준은 관연천재님이신가요----------1");
         
         
-        blogDao.insertNewContent("고경준은 관연천재님이신가요?---------2?");
-        
-        
-        blogDao.insertNewContent("고경준은 관연천재님이신가요?---------3?");
-        
-        blogDao.insertNewContent("고경준은 관연천재님이신가요?---------3?");
-        
-        
-        blogDao.insertNewContent("고경준은 관연천재님이신가요?---------4?");
-        blogDao.insertNewContent("고경준은 관연천재님이신가요?---------4?");
-        blogDao.insertNewContent("고경준은 관연천재님이신가요?---------4?");
-        
-        blogDao.insertNewContent("고경준은 관연천재님이신가요?---------4?");
-        
-        blogDao.insertNewContent("고경준은 관연천재님이신가요?---------4?");
-        
         
         return "Greetings from Spring Boot!";
     }
