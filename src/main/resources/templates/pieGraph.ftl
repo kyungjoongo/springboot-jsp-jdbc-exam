@@ -15,21 +15,7 @@
     <link rel="stylesheet" type="text/css" href="jquery.jqplot.1.0.9/jquery.jqplot.css"/>
 
     <script>
-        var s2 = [];
         var jsonResult = [];
-
-        $(document).ready(function () {
-
-               var chart_data = {"oranges": "30", "apples": "20", "bananas": "6"};
-              var line1 = [];
-              for (var prop_name in chart_data) {
-                  line1.push([prop_name, chart_data[prop_name]])
-              }
-              // line1 should be [["oranges", 10], ["apples", 20], ["bananas", 6]]
-
-        });
-
-
         function getGraphData() {
 
             $.ajax({
@@ -54,10 +40,7 @@
 
             getGraphData();
             var data = jsonResult;
-                /*    [
-                ['Heavy Industry', 12],['Retail', 9], ['Light Industry', 14],
-                ['Out of home', 16],['Commuting', 7], ['Orientation', 9]
-            ];*/
+
             var plot1 = jQuery.jqplot ('chart1', [data],
                     {
                         seriesDefaults: {
