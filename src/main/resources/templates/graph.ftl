@@ -38,13 +38,7 @@
             });
         }
 
-        //으하하하하하하하하하ㅏ하slfksdlkflskdlfksdlfklsdkflsdklfskdlfk
-        //반가반가워요sdlkfsldkflsdkflk
-        //sadlfkalsdkflsakdflksadlfkl
-        //sdalkfasldkflk230940239409234lkflaksdflk
-        ///어쩌고 저쩌곤dflksdlfkldskflk
-
-
+        //뱃살이 왜이리 안빠지는거냐sdlfksldkflsdkflk주글래lkslfkdslfksfdl
 
         $(document).ready(function () {
 
