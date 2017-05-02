@@ -18,6 +18,8 @@ public class KyungjoonApplication extends SpringBootServletInitializer {
         return application.sources(KyungjoonApplication.class);
     }
 
+
+
     public static void main(String[] args) throws Exception {
     	
     	System.setProperty("spring.devtools.restart.enabled", "true");

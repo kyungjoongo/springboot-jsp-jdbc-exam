@@ -75,8 +75,9 @@ public class CRUDController {
   		
       	
     	List arrList = exampleDao.getBlog();
-    	
+
     	System.out.println("list-->:"+ arrList.toString());
+        System.out.println("list22222-->:"+ arrList.toString());
   		
   		return "grid";
   	}

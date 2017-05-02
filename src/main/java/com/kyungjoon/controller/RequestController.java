@@ -47,9 +47,22 @@ public class RequestController {
 
 		return "graph";
 	}
-	
-	
-	
-	
-	
+
+
+	@RequestMapping("/pieGraph")
+	public String pieGraph(Model model,
+						@RequestParam(value = "name", required = false, defaultValue = "World") String name) {
+		model.addAttribute("name", "고경준천재지222~~~~~~~~");
+
+		// sdlkfsdlkflsdklfkdslfklkdsf
+
+		return "pieGraph";
+	}
+
+
+
+
+
+
+
 }
