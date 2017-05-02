@@ -15,37 +15,42 @@
     <link rel="stylesheet" type="text/css" href="jquery.jqplot.1.0.9/jquery.jqplot.css"/>
 
     <script>
-    	var s2 = [];
-    	var tickResult = [];
-    	
-    	function getGraphData(){
-    		
-    		 $.ajax({
-                 // have to use synchronous here, else the function
-                 // will return before the data is fetched
-                 async: false,
-                 url: "/getGraphData",
-                 dataType: "json",
-                 success: function (data) {
-                 	for ( var i=0 ; i<data.length; i++){
-                 	
-                 		s2.push(data[i].percentage);
-                 		tickResult.push(data[i].name);
-                 	}
-                 	
-                     
-                 }
-             });
-    	}
+        var s2 = [];
+        var tickResult = [];
 
-    	//으하하하하하하하하하ㅏ하slfksdlkflskdlfksdlfklsdkflsdklfskdlfk
-    	
+        function getGraphData() {
+
+            $.ajax({
+                // have to use synchronous here, else the function
+                // will return before the data is fetched
+                async: false,
+                url: "/getGraphData",
+                dataType: "json",
+                success: function (data) {
+                    for (var i = 0; i < data.length; i++) {
+
+                        s2.push(data[i].percentage);
+                        tickResult.push(data[i].name);
+                    }
+
+
+                }
+            });
+        }
+
+        //으하하하하하하하하하ㅏ하slfksdlkflskdlfksdlfklsdkflsdklfskdlfk
+        //반가반가워요sdlkfsldkflsdkflk
+        //sadlfkalsdkflsakdflksadlfkl
+        //sdalkfasldkflk230940239409234lkflaksdflk
+        ///어쩌고 저쩌곤dflksdlfkldskflk
+
+
 
         $(document).ready(function () {
-        	
-        	getGraphData();
-        	
-        	
+
+            getGraphData();
+
+
             $.jqplot.config.enablePlugins = true;
             //var s1 = [2, 6, 7, 10];
             var s1 = s2;
@@ -73,8 +78,8 @@
                     }
             );
         });
-        
-        
+
+
         $(document).ready(function () {
 
             /*   var chart_data = {"oranges": "30", "apples": "20", "bananas": "6"};
@@ -83,13 +88,8 @@
                   line1.push([prop_name, chart_data[prop_name]])
               }
               // line1 should be [["oranges", 10], ["apples", 20], ["bananas", 6]] */
-              
-             
 
-
-
-          });
-
+        });
 
 
     </script>
