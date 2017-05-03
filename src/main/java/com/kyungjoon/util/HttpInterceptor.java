@@ -7,7 +7,6 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.HashMap;
 
 
 @Component
@@ -39,6 +38,7 @@ public class HttpInterceptor extends HandlerInterceptorAdapter {
              */
             return true;
         }else{
+
             response.sendRedirect("/webapp/loginForm");//Here Login is action Name which is Mapped in Login Controller
             return false;
         }

@@ -1,17 +1,19 @@
 package com.kyungjoon;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
-
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
 /**
  * @author kyungjoon
  */
+/*
 @SpringBootApplication
 public class KyungjoonApplication extends SpringBootServletInitializer {
-    @Override
+   */
+/* @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(KyungjoonApplication.class);
     }
@@ -21,9 +23,11 @@ public class KyungjoonApplication extends SpringBootServletInitializer {
 
         System.setProperty("spring.devtools.restart.enabled", "true");
         SpringApplication.run(KyungjoonApplication.class, args);
-    }
+    }*//*
 
-   /* @Bean
+
+   */
+/* @Bean
     public WebMvcConfigurerAdapter webMvcConfigurerAdapter() {
         return new WebMvcConfigurerAdapter() {
             @Override
@@ -31,6 +35,22 @@ public class KyungjoonApplication extends SpringBootServletInitializer {
                 registry.addInterceptor(new KyungjoonLoginIntercepter()).addPathPatterns("*");
             }
         };
-    }*/
+    }*//*
 
+
+
+
+
+}*/
+
+
+@Configuration
+@EnableAutoConfiguration
+@ComponentScan
+public class KyungjoonApplication extends SpringBootServletInitializer {
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(KyungjoonApplication.class);
+    }
 }

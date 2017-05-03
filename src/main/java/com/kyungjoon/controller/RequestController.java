@@ -77,6 +77,10 @@ public class RequestController {
     }
 
 
+
+
+
+
     @RequestMapping("/webapp/loginAction")
     public String loginProcess(Model model,HttpServletRequest request,
                                @RequestParam(value = "id", required = false) String id
@@ -105,11 +109,25 @@ public class RequestController {
 
         }else{
             System.out.println("유저가 존재하지 않는다..");
+
+            model.addAttribute("message", "해당유저가 존재하지 않습니다.");
             return "/webapp/loginForm";
         }
 
 
     }
+
+
+    @RequestMapping("/webapp/logoutAction")
+    public String logoutAction(Model model,HttpServletRequest request,
+                               @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
+
+
+        request.getSession().invalidate();
+
+        return "/webapp/loginForm";
+    }
+
 
 
 }
