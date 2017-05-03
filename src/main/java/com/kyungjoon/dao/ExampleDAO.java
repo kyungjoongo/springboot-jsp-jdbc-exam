@@ -14,14 +14,14 @@ public interface ExampleDAO {
 
 package com.kyungjoon.dao;
 
-import java.util.List;
-
+import com.kyungjoon.model.Blog;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
-import com.kyungjoon.model.Blog;
+import java.util.HashMap;
+import java.util.List;
 
 @Repository
 public class ExampleDAO {
@@ -32,17 +32,22 @@ public class ExampleDAO {
 	public List getBlog() {
 
 		List<Blog> arrList = sqlSession.selectList("com.kyungjoon.mapper.ExampleMapper.getBlog");
-/*
-		for (Blog blog : arrList) {
-			
-			String id = blog.getId();
-			String name = blog.getName();
-			
-			System.out.println("name:"+ name);
-			System.out.println("id:"+ id);
-
-		}*/
-
 		return arrList;
+	}
+
+	/**
+	 * 유저의 존재여부를 리턴.
+	 * @param userMap
+	 * @return
+	 */
+	public Boolean getUser(HashMap userMap) {
+
+		int userCnt= sqlSession.selectOne("com.kyungjoon.mapper.ExampleMapper.getUser", userMap);
+
+		if (userCnt>0){
+			return true;
+		}else{
+			return false;
+		}
 	}
 }

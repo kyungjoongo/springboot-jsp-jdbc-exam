@@ -7,9 +7,7 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
 
 
 /**
- * 
  * @author kyungjoon
- *
  */
 @SpringBootApplication
 public class KyungjoonApplication extends SpringBootServletInitializer {
@@ -19,10 +17,20 @@ public class KyungjoonApplication extends SpringBootServletInitializer {
     }
 
 
-
     public static void main(String[] args) throws Exception {
-    	
-    	System.setProperty("spring.devtools.restart.enabled", "true");
+
+        System.setProperty("spring.devtools.restart.enabled", "true");
         SpringApplication.run(KyungjoonApplication.class, args);
     }
+
+   /* @Bean
+    public WebMvcConfigurerAdapter webMvcConfigurerAdapter() {
+        return new WebMvcConfigurerAdapter() {
+            @Override
+            public void addInterceptors(InterceptorRegistry registry) {
+                registry.addInterceptor(new KyungjoonLoginIntercepter()).addPathPatterns("*");
+            }
+        };
+    }*/
+
 }

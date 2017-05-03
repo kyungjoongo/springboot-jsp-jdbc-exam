@@ -1,14 +1,10 @@
 package com.kyungjoon.controller;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicLong;
-
+import com.kyungjoon.dao.BlogDao;
+import com.kyungjoon.model.Greeting;
+import net.minidev.json.JSONValue;
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,10 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.kyungjoon.dao.BlogDao;
-import com.kyungjoon.model.Greeting;
-
-import net.minidev.json.JSONValue;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicLong;
 
 @Controller
 public class RestController {
@@ -69,7 +66,7 @@ public class RestController {
 
 	}
 
-	@RequestMapping("/grid")
+	@RequestMapping("/webapp/grid")
 	public String kyungjoon22(Model model,
 			@RequestParam(value = "name", required = false, defaultValue = "World") String name) {
 

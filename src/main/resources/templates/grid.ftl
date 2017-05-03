@@ -166,7 +166,7 @@ $(function() {
 </head>
 <body>
  <div class="container">
-	진짜로 장난하냐3333333333333333333333333
+	userid : ${id}
 	<table id="list2"></table>
 	<div id=pager2></div>
 

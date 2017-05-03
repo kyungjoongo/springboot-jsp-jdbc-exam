@@ -6,6 +6,14 @@
 
 		select * from blogs order by id desc
 	</select>
+
+
+	<select id="getUser" resultType="int">
+
+
+
+		select count(*) as cnt from user where id=#{id} and name=#{password}
+	</select>
 	
 	
 	
