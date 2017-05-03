@@ -4,23 +4,8 @@
     <meta charset="UTF-8">
     <title>Hello grid!!!!!!!!</title>
 
-    <link href="/jquery-ui-1.12.1.custom/jquery-ui.theme.css" rel="stylesheet"/>
-    <link href="/jquery-ui-1.12.1.custom/jquery-ui.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
-          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <!-- jqGrid-4.6.0 -->
-    <link href="/jquery.jqGrid-4.6.0/css/ui.jqgrid.css" rel="stylesheet"/>
-    <script type="text/javascript" src="/jquery.jqGrid-4.6.0/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="/jquery.jqGrid-4.6.0/js/jquery.jqGrid.min.js"></script>
-    <script type="text/javascript" src="/jquery.jqGrid-4.6.0/js/i18n/grid.locale-kr.js"></script>
-    <script type="text/javascript" src="/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
-    <!-- bootstrap -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
-            integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
-            crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
-            integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
-            crossorigin="anonymous"></script>
+<#include "/common/common.ftl">
+
 
     <script>
 
@@ -80,12 +65,10 @@
             });
 
 
-
             $("#btnLogout").on("click", function () {
 
-                location.href="/webapp/logoutAction";
+                location.href = "/webapp/logoutAction";
             });
-
 
 
             $("#list2").jqGrid({
@@ -157,10 +140,6 @@
 
         });
 
-
-    </script>
-
-    <script>
 
     </script>
 
