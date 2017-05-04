@@ -1,4 +1,4 @@
-package com.kyungjoon.util;
+/*package com.kyungjoon.util;
 
 public class LoginFailException extends Exception{
 
@@ -7,4 +7,4 @@ public class LoginFailException extends Exception{
     public LoginFailException(String message) {
         super(message);
     }        
-}
+}*/
