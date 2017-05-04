@@ -21,7 +21,7 @@ import com.kyungjoon.dao.ExampleDAO;
 /*@RestController*/
 
 @Controller
-public class CRUDController {
+public class CRUDTestController {
  
     @Autowired
     private BlogDao blogDao;

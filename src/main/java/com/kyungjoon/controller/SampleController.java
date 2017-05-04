@@ -19,7 +19,7 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Controller
-public class RestController {
+public class SampleController {
 
 	private static final String template = "Hello, %s!";
 	private final AtomicLong counter = new AtomicLong();
@@ -50,40 +50,6 @@ public class RestController {
 		return vmap;
 	}
 
-	@RequestMapping("getGridData")
-	public @ResponseBody String getGridData(
-			@RequestParam(value = "name", required = false, defaultValue = "Stranger") String name)
-			throws JsonGenerationException, JsonMappingException, IOException {
-
-		List arrList = blogDao.selecContents(null);
-
-		Map<String, Object> map = new HashMap<String, Object>();
-		/*map.put("page", page);
-		map.put("total", total);
-		map.put("records", records);*/
-		map.put("rows", arrList);
-		return JSONValue.toJSONString(map);
-
-	}
-
-	@RequestMapping("/webapp/grid")
-	public String kyungjoon22(Model model,
-			@RequestParam(value = "name", required = false, defaultValue = "World") String name) {
-
-		return "grid";
-	}
 	
-	@RequestMapping("/getGraphData")
-	public @ResponseBody String getGraphData()
-			
-			throws JsonGenerationException, JsonMappingException, IOException {
-
-		List arrList = blogDao.getGraphData();
-
-		/*Map<String, Object> map = new HashMap<String, Object>();
-		map.put("result", arrList);*/
-		return JSONValue.toJSONString(arrList);
-
-	}
 
 }

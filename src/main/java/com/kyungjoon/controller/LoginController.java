@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 
 @Controller
-public class RequestController {
+public class LoginController {
 
     @Autowired
     private BlogDao blogDao;
@@ -26,7 +26,7 @@ public class RequestController {
                         @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
 
         model.addAttribute("foo", "test98989898989898");
-        model.addAttribute("kyungjoon", "고경준은 천재다");
+        model.addAttribute("kyungjoon", "고경준은 genius");
         blogDao.insertNewContent("고경준은 genius the genius33333");
         return "hello";
 
@@ -36,10 +36,7 @@ public class RequestController {
     @RequestMapping("/kyungjoon22")
     public String kyungjoon22(Model model,
                               @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
-        model.addAttribute("name", "고경준천재지~~~~~~~~");
-
-        // sdlkfsdlkflsdklfkdslfklkdsf
-
+        model.addAttribute("name", "test~~~~~~~~");
         return "kyungjoon";
     }
 
@@ -50,16 +47,10 @@ public class RequestController {
     @RequestMapping("/webapp/loginForm")
     public String loginForm(Model model,
                             @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
-        model.addAttribute("name", "고경준천재지222~~~~~~~~");
-
-        // sdlkfsdlkflsdklfkdslfklkdsf
+        model.addAttribute("name", "testtt 222~~~~~~~~");
 
         return "loginForm";
     }
-
-
-
-
 
 
     @RequestMapping("/webapp/loginAction")
