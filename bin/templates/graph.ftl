@@ -1,18 +1,13 @@
 <html>
 <head>
-
-
-   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="/jquery.jqplot.1.0.9/jquery.jqplot.js"></script>
     <script type="text/javascript" src="/jquery.jqplot.1.0.9/plugins/jqplot.json2.js"></script>
     <script type="text/javascript" src="/jquery.jqplot.1.0.9/plugins/jqplot.pieRenderer.js"></script>
-
     <script type="text/javascript" src="/jquery.jqplot.1.0.9/plugins/jqplot.barRenderer.js"></script>
     <script type="text/javascript" src="/jquery.jqplot.1.0.9/plugins/jqplot.pieRenderer.js"></script>
     <script type="text/javascript" src="/jquery.jqplot.1.0.9/plugins/jqplot.categoryAxisRenderer.js"></script>
     <script type="text/javascript" src="/jquery.jqplot.1.0.9/plugins/jqplot.pointLabels.js"></script>
-
-
     <link rel="stylesheet" type="text/css" href="/jquery.jqplot.1.0.9/jquery.jqplot.css"/>
 
     <script>
