@@ -48,6 +48,11 @@ public class KyungjoonApplication extends SpringBootServletInitializer {
 @EnableAutoConfiguration
 @ComponentScan
 public class KyungjoonApplication extends SpringBootServletInitializer {
+	
+	public KyungjoonApplication() {
+	    super();
+	    setRegisterErrorPageFilter(false); // <- this one
+	}
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {

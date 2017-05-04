@@ -12,8 +12,10 @@
 
 
 
-		select count(*) as cnt from user where id=#{id} and name=#{password}
+		select count(*) as cnt from user where id=#{id} and password=#{password}
 	</select>
+	
+	
 	
 	
 	
