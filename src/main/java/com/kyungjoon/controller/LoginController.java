@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 
 @Controller
+@RequestMapping("/login")
 public class LoginController {
 
     @Autowired
@@ -20,31 +21,10 @@ public class LoginController {
 
     @Autowired
     private ExampleDAO exampleDao;
-
-    @RequestMapping("/hello")
-    public String hello(Model model,
-                        @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
-
-        model.addAttribute("foo", "test98989898989898");
-        model.addAttribute("kyungjoon", "고경준은 genius");
-        blogDao.insertNewContent("고경준은 genius the genius33333");
-        return "hello";
-
-
-    }
-
-    @RequestMapping("/kyungjoon22")
-    public String kyungjoon22(Model model,
-                              @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
-        model.addAttribute("name", "test~~~~~~~~");
-        return "kyungjoon";
-    }
-
-
   
 
 
-    @RequestMapping("/webapp/loginForm")
+    @RequestMapping("/loginForm")
     public String loginForm(Model model,
                             @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
         model.addAttribute("name", "testtt 222~~~~~~~~");
@@ -53,7 +33,7 @@ public class LoginController {
     }
 
 
-    @RequestMapping("/webapp/loginAction")
+    @RequestMapping("/loginAction")
     public String loginProcess(Model model,HttpServletRequest request,
                                @RequestParam(value = "id", required = false) String id
                             , @RequestParam(value = "password", required = false) String password
@@ -76,28 +56,28 @@ public class LoginController {
 
             request.getSession().setAttribute("id", id);
 
-            return "/webapp/grid";
+            return "/gridmain/grid";
 
 
         }else{
             System.out.println("유저가 존재하지 않는다..");
 
             model.addAttribute("message", "해당유저가 존재하지 않습니다.");
-            return "/webapp/loginForm";
+            return "/login/loginForm";
         }
 
 
     }
 
 
-    @RequestMapping("/webapp/logoutAction")
+    @RequestMapping("/logoutAction")
     public String logoutAction(Model model,HttpServletRequest request,
                                @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
 
 
         request.getSession().invalidate();
 
-        return "/webapp/loginForm";
+        return "/login/loginForm";
     }
 
 

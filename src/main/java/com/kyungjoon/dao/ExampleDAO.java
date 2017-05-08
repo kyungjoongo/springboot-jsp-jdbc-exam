@@ -14,12 +14,14 @@ public interface ExampleDAO {
 
 package com.kyungjoon.dao;
 
+import com.kyungjoon.jqgrid.JqGridObject;
 import com.kyungjoon.model.Blog;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -50,4 +52,43 @@ public class ExampleDAO {
 			return false;
 		}
 	}
+	
+	
+	public List select_query_manager_userquery(JqGridObject jqgridobject) {
+
+		List<HashMap> arrList = sqlSession.selectList("com.kyungjoon.mapper.ExampleMapper.select_query_manager_userquery", jqgridobject);
+		List newArrayList = new ArrayList<>();
+		
+		/**
+		 * query_text , query_response 합쳐준다.
+		 */
+		for ( HashMap arrOne : arrList){
+			
+			
+			//query_text, query_response
+			
+			String query_text= (String) arrOne.get("query_text");
+			String query_response= (String) arrOne.get("query_response");
+			
+			String queryTextAndResponse = query_text + ";" + query_response;
+			
+			arrOne.put("queryTextAndResponse", queryTextAndResponse);
+			newArrayList.add(arrOne);
+			
+		}
+		
+		
+		return newArrayList;
+	}
+	
+	public int select_query_manager_userquery_count() {
+
+		int count= sqlSession.selectOne("com.kyungjoon.mapper.ExampleMapper.select_query_manager_userquery_count");
+		
+		return count;
+	}
+
+
+	
+	
 }

@@ -72,68 +72,32 @@
 
 
             $("#list2").jqGrid({
-                url: '/gridmain/getGridData',
+                url: '/gridmain/getGridData2',
                 datatype: "json",
-                colNames: ['id','query_text', 'query_route', 'query_type', 'query_continuation', 'query_work_status', 'worker', 'query_qc', 'pub_date'],
+                colNames: ['id', 'content'],
                 colModel: [
-                	{name: 'id', width: 50, sortable: true,   align: "right", sorttype: "number"}
-                    ,{name: 'queryTextAndResponse', width: 500, sortable: true, sorttype: "text", formatter:queryFormatter}
-                    ,{name: 'query_route', width: 80, sortable: true, sorttype: "text"}
-                    ,{name: 'query_type', width: 80, sortable: true, sorttype: "text"}
-                    ,{name: 'query_continuation', width: 80, sortable: true, sorttype: "text"}
-                    ,{name: 'query_work_status', width: 80, sortable: true, sorttype: "text"}
-                    ,{name: 'worker', width: 80, sortable: true, sorttype: "text"}
-                    ,{name: 'query_qc', width: 80, sortable: true, sorttype: "text"}
-                    ,{name: 'pub_date', width: 150, sortable: true, sorttype: "text"}
-                    //{name: 'query_response', width: 500, sortable: true, sorttype: "text"},
+                    {name: 'id', index: 'id', width: 500, sortable: true, sorttype: "number"},
+                    {name: 'content', width: 500, sortable: true, sorttype: "text"},
                 ],
-                rowNum: 10,
+                rowNum: 30,
                 height: 'auto',
                 rowList: [10, 20, 30],
                 pager: '#pager2',
-             //   sortname: 'id',
+                sortname: 'id',
                 viewrecords: true,
                 sortorder: "desc",
-                caption: "JSON 33333333333333",
-                
-                loadonce: false,
+                caption: "JSON Example",
                 jsonReader: {
                     repeatitems: false,
-                    root: function(obj) {
-                    	
-                    	return obj.rows; 
-                   	},
-                    page: function(obj) {
-                    	return obj.page;
-                   	},
-                    total: function(obj) { 
-                    	return obj.total 
-                   	},
-                    records: function(obj) { 
-                    	return 900; 
-                   	}
+                    root: "rows"
+                }, //Required for client side sorting
+                loadonce: false,
+                gridComplete: function () {
+                    $("#list2").setGridParam({datatype: 'local'});
                 }
-               
-              
             });
-            
-        
-       		$('#list2').jqGrid('filterToolbar', { searchOnEnter: true, enableClear: false });
-            
-            function queryFormatter (cellvalue, options, rowObject)
-            {
-               // do something here
-               console.log("Sdflksdlfksdlkflsdkf");
-               
-               var splitedArray =  cellvalue.split(";");
-               
-               var new_format_value = '<font color=blue>'+splitedArray[0] + '</font>'+ "\n" +  splitedArray[1]; 
-               
-               return new_format_value;
-            }
-            
 
-          /*   $('#list2').jqGrid('setGridParam', {sortorder: 'desc'});
+            $('#list2').jqGrid('setGridParam', {sortorder: 'desc'});
             $('#list2').jqGrid('sortGrid', 'id');
 
 
@@ -155,7 +119,24 @@
 
                     }
             );
- */
+
+
+            /* $('#selectLang').on( "change", function() {
+
+                var lang = $('#selectLang option:selected').val() ;
+
+                if ( lang =='ko'){
+                        loadjscssfile("/jquery.jqGrid-4.6.0/js/i18n/grid.locale-kr.js", "js") ////dy
+                }
+
+                if ( lang =='en'){
+                        loadjscssfile("/jquery.jqGrid-4.6.0/js/i18n/grid.locale-en.js", "js") ////dy
+                }
+                $("#list2").trigger("reloadGrid", [{current: true}]);
+
+
+            });
+              */
 
         });
 
@@ -164,7 +145,7 @@
 
 </head>
 <body>
-<div class="">
+<div class="container">
     <table id="list2"></table>
     <div id=pager2></div>
 

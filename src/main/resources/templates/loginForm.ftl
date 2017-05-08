@@ -10,7 +10,7 @@
 
 
 <div class="container">
-    <form action="/webapp/loginAction" method="post">
+    <form action="/login/loginAction" method="post">
         <div class="form-group" style="width: 500px">
             <label for="id">Email address:</label>
             <input type="text" name="id" class="form-control" id="id" value="kyungjoon" size="300px">
@@ -24,11 +24,13 @@
     </form>
 </div>
 <br/>
-<div class="container">
+<div class="container" style="">
 
 
      <#if message??>
-          ${message}
+     	  <span style="color: red" >
+          	${message}
+          </span>
      </#if>
 
 </div>

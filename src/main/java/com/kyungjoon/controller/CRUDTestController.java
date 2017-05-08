@@ -32,7 +32,7 @@ public class CRUDTestController {
     @RequestMapping("/")
     public String index() {
         blogDao.insertNewContent("Hello Spring?");
-        return "Greetings from Spring Boot!";
+        return "/login/loginForm";
     }
     
     

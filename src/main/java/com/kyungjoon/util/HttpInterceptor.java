@@ -25,10 +25,10 @@ public class HttpInterceptor extends HandlerInterceptorAdapter {
         
 
         //인터셉트의 걸리지 않고 통과시킴..(uri가 로그인 폼인경우)
-        if ( uri.equals("/webapp/loginForm")){
+        if ( uri.equals("/login/loginForm")){
             return true;
         //인터셉트의 걸리지 않고 통과시킴..(uri가 로그인action 인경우)
-        }else if ( uri.equals("/webapp/loginAction")){
+        }else if ( uri.equals("/login/loginAction")){
             return true;
         }
         //세션 id가 있는 경우 걸르지 않고 통과시킴.
@@ -36,7 +36,7 @@ public class HttpInterceptor extends HandlerInterceptorAdapter {
             return true;
         }else{//나머지의 경우 걸림.
 
-            response.sendRedirect("/webapp/loginForm");//Here Login is action Name which is Mapped in Login Controller
+            response.sendRedirect("/login/loginForm");//Here Login is action Name which is Mapped in Login Controller
             return false;
         }
     }

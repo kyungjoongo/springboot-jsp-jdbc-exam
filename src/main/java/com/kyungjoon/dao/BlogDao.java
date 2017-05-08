@@ -22,7 +22,7 @@ public class BlogDao {
     }
     
     public List selecContents(String content) {
-        List arrList = template.queryForList("select * from blogs");
+        List arrList = template.queryForList("select * from blogs limit 1, 30");
         
         return arrList;
     }

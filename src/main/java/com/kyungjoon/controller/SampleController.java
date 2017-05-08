@@ -27,6 +27,24 @@ public class SampleController {
 	@Autowired
 	private BlogDao blogDao;
 
+	@RequestMapping("/kyungjoon22")
+	public String kyungjoon22(Model model,
+			@RequestParam(value = "name", required = false, defaultValue = "World") String name) {
+		model.addAttribute("name", "test~~~~~~~~");
+		return "kyungjoon";
+	}
+
+	@RequestMapping("/hello")
+	public String hello(Model model,
+			@RequestParam(value = "name", required = false, defaultValue = "World") String name) {
+
+		model.addAttribute("foo", "test98989898989898");
+		model.addAttribute("kyungjoon", "고경준은 genius");
+		blogDao.insertNewContent("고경준은 genius the genius33333");
+		return "hello";
+
+	}
+
 	@RequestMapping("/hello-world")
 	public @ResponseBody Greeting sayHello(
 			@RequestParam(value = "name", required = false, defaultValue = "Stranger") String name) {
@@ -49,7 +67,5 @@ public class SampleController {
 		// id, contents
 		return vmap;
 	}
-
-	
 
 }

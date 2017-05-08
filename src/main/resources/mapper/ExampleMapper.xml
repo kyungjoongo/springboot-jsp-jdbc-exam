@@ -16,6 +16,20 @@
 	</select>
 	
 	
+	<select id="select_query_manager_userquery" resultType="hashmap">
+	
+	
+		select * from query_manager_userquery limit #{startNo} ,  #{pageSize}
+	
+	</select>
+	
+	
+	<select id="select_query_manager_userquery_count" resultType="int">
+	
+	
+		select count(*) from query_manager_userquery 
+	
+	</select>
 	
 	
 	
