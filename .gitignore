@@ -12,11 +12,14 @@
 *.class
 
 
+
 ### IntelliJ IDEA ###
 .idea
 *.iws
 *.iml
 *.ipr
+*.*_test.java
+/src/main/java/com/tinkerbell/temp/*
 
 ### NetBeans ###
 nbproject/private/
