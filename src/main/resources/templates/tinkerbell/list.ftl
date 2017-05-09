@@ -1,17 +1,32 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Hello grid!!!!!!!!</title>
 
 <#include "/common/common.ftl">
+
+
     <script>
 
+
+
         $(function () {
+
+            //쿠키가 존재하는 경우.
+            if (  document.cookie !='' && document.cookie != 'undefined'){
+                $("#selectChangeTheme").val(document.cookie);
+                loadTheme(document.cookie);
+            }else{//쿠키가 존재 하지 않는 경우.........(기본값)
+                document.cookie= "green2";
+                $("#selectChangeTheme").val(document.cookie);
+                loadTheme(document.cookie);
+            }
+
             //그리드 로딩..
             loadGrid();
 
-            $("#modifyDialog").dialog({
+            $( "#modifyDialog" ).dialog({
                 autoOpen: false,
                 title: '수정',
                 modal: false,
@@ -37,21 +52,36 @@
 
             });
 
-            //btnChangeTheme
-            $("#btnChangeTheme").on("change", function () {
 
-                //alert($(this).attr("id"));
 
-                var selectId = $("#btnChangeTheme option:selected").attr("id");
 
-                if (selectId == 'green2') {
+            /*$(":file").filestyle({input: false});*/
+            $(".dropdown-menu li a").click(function () {
+
+                $(".btn:first-child").text($(this).text());
+                $(".btn:first-child").val($(this).text());
+
+            });
+
+
+            $("#selectChangeTheme").on("change", function () {
+
+                var selectedId = $("#selectChangeTheme option:selected").attr("id");
+                loadTheme(selectedId);
+            });
+
+
+
+            function loadTheme(selectedId){
+
+                if (selectedId == 'green2') {
                     loadjscssfile("/jquery-ui-1.12.1.green2/jquery-ui.theme.css", "css")
                     loadjscssfile("/jquery.jqGrid-4.6.0/css/ui.jqgrid.css", "css")
-                } else if (selectId == 'green') {
+                } else if (selectedId == 'green') {
                     loadjscssfile("/jquery-ui-1.12.1.green/jquery-ui.theme.css", "css") ////dy
                     loadjscssfile("/jquery.jqGrid-4.6.0/css/ui.jqgrid.css", "css") ////dy
 
-                } else if (selectId == 'red') {
+                } else if (selectedId == 'red') {
 
                     loadjscssfile("/jquery-ui-1.12.1.red/jquery-ui.theme.css", "css") ////dy
                     loadjscssfile("/jquery.jqGrid-4.6.0/css/ui.jqgrid.css", "css") ////dy
@@ -61,8 +91,8 @@
                     loadjscssfile("/jquery.jqGrid-4.6.0/css/ui.jqgrid.css", "css") ////dy
                 }
 
-
-            });
+                document.cookie= selectedId;
+            }
 
 
             $("#btnLogout").on("click", function () {
@@ -92,6 +122,7 @@
 
             });
 
+
             $("#btnPopupSubmit").on("click", function () {
 
                 $.ajax({
@@ -100,24 +131,20 @@
                     async: false,
                     data: {
                         rowid: $("#rowId").val(),
-                        query: $("#query").val(),
-                        query_answer: $("#query_answer").val()
+                        query : $("#query").val(),
+                        query_answer : $("#query_answer").val()
 
 
                     },
                     success: function (data) {
-
-                        // alert("수정성공");
-
                         $('#modifyDialog').dialog('close');
-
                         $('#list2').setGridParam({page: 1, datatype: "json"}).trigger('reloadGrid');
                     }
                 })
 
             });
 
-            $('input[id=query]').on('keydown', function (e) {
+            $('input[id=query]').on('keydown', function(e) {
                 if (e.which == 13) {
                     e.preventDefault();
 
@@ -127,14 +154,14 @@
                 }
             });
 
-            $('input[id=query_answer]').on('keydown', function (e) {
+            $('input[id=query_answer]').on('keydown', function(e) {
                 if (e.which == 13) {
                     e.preventDefault();
                     $("#btnPopupSubmit").trigger("click");
                 }
             });
 
-        });//onready End
+        });//onreadyEnd
 
 
         /*function hasExtension(inputID, exts) {
@@ -151,7 +178,6 @@
         };
 
 
-        //그리드 로딩
         function loadGrid() {
 
             $("#list2").jqGrid({
@@ -182,13 +208,14 @@
                     root: "rows"
                 }, //Required for client side sorting
                 loadonce: true,
-                ondblClickRow: function (rowid) {
-                    var rowData = $('#list2').jqGrid('getRowData', rowid);
-                    var query = rowData.name;
-                    var query_answer = rowData.query_answer;
+                ondblClickRow: function(rowid)
+                {
+                    var rowData = $('#list2').jqGrid ('getRowData', rowid);
+                    var query= rowData.name;
+                    var query_answer= rowData.query_answer;
 
 
-                    $("#modifyDialog").dialog("open");
+                    $("#modifyDialog").dialog( "open" );
                     $("#query").val(query);
                     $("#query_answer").val(query_answer);
 
@@ -223,23 +250,34 @@
                     $(".btnRowModify").on("click", function () {
 
                         var rowid = $(this).attr("id");
+
                         $("#rowId").val(rowid);
-                        var rowData = $('#list2').jqGrid('getRowData', rowid);
-                        var query = rowData.name;
-                        var query_answer = rowData.query_answer;
-                        $("#modifyDialog").dialog("open");
+
+
+                        var rowData = $('#list2').jqGrid ('getRowData', rowid);
+
+                        var query= rowData.name;
+                        var query_answer= rowData.query_answer;
+
+
+                        $("#modifyDialog").dialog( "open" );
 
                         $("#query").val(query);
                         $("#query_answer").val(query_answer);
 
                     });
+
+
+
+
                 },
-                multiselect: true
+                multiselect: 1
                 //editable : 1
             });
 
-            /*$('#list2').jqGrid('setGridParam', {sortorder: 'desc'});
-            $('#list2').jqGrid('sortGrid', 'id');*/
+            /*  $('#list2').jqGrid('setGridParam', {sortorder: 'desc'});
+              $('#list2').jqGrid('sortGrid', 'id');
+  */
 
             $("#list2").jqGrid('navGrid', '#pager2',
                     {edit: false, add: false, del: false, search: true}, {}, {}, {},
@@ -260,16 +298,18 @@
                     }
             );
 
-        }//end of 그리드 로딩
+        }//loadGrid End
+
+
+
     </script>
     <style>
 
-        .ui-dialog-title {
+        .ui-dialog-title{
             font-size: 10pt;
         }
-
-        .ui-state-default {
-            font-size: 10pt;
+        .ui-state-default{
+            font-size:10pt;
         }
 
     </style>
@@ -278,8 +318,10 @@
 
 <div class="container">
 
+
+
     Theme:
-    <select id="btnChangeTheme">
+    <select id="selectChangeTheme">
         <option id="green2">green2</option>
         <option id="green">green</option>
         <option id="gray">gray</option>
@@ -328,7 +370,7 @@
 
 
     <!--수정 다이얼로그-->
-    <div id="modifyDialog" class="small" title="Dialog Title goes here...">
+    <div id ="modifyDialog" class="small" title = "Dialog Title goes here...">
         <table>
             <colgroup>
                 <col width="100px;">
@@ -336,7 +378,7 @@
             </colgroup>
             <tr>
                 <td>
-                    <label>query&nbsp;&nbsp; </label>
+                    <label>query&nbsp;&nbsp;  </label>
                 </td>
                 <td>
                     <input type="text" width="500px" size="80" id="query" style="font-size: 9pt;">
@@ -345,7 +387,7 @@
             </tr>
             <tr>
                 <td>
-                    <label>query_answer&nbsp;&nbsp; </label>
+                    <label>query_answer&nbsp;&nbsp;  </label>
                 </td>
                 <td>
                     <input type="text" width="500px" size="80" id="query_answer" style="font-size: 9pt;">
@@ -355,7 +397,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <input type="button" id="btnPopupSubmit" value="저장" class="ui-state-default">
+                    <input type="button" id="btnPopupSubmit" value="저장"  class="ui-state-default">
                 </td>
 
             </tr>
