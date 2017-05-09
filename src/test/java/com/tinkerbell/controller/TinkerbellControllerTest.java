@@ -1,12 +1,15 @@
+/*
 package com.tinkerbell.controller;
 
 import com.tinkerbell.util.ApachePOIExcelRead;
 import org.junit.Before;
 import org.junit.Test;
 
+*/
 /**
  * Created by kyungjoon on 2017-05-09.
- */
+ *//*
+
 public class TinkerbellControllerTest {
     @Test
     public void singleFileUpload1() throws Exception {
@@ -42,4 +45,4 @@ public class TinkerbellControllerTest {
     public void uploadStatus() throws Exception {
     }
 
-}
+}*/
