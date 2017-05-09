@@ -195,6 +195,18 @@
                     root: "rows"
                 }, //Required for client side sorting
                 loadonce: true,
+              /*  ondblClickRow: function(rowid)
+                {
+                    var rowData = $('#list2').jqGrid ('getRowData', rowid);
+                    var query= rowData.name;
+                    var query_answer= rowData.query_answer;
+
+
+                    $("#modifyDialog").dialog( "open" );
+                    $("#query").val(query);
+                    $("#query_answer").val(query_answer);
+
+                },*/
                 gridComplete: function () {
                     $("#list2").setGridParam({datatype: 'local'});
 
@@ -226,7 +238,7 @@
                         var rowid = $(this).attr("id");
 
                         $("#rowId").val(rowid);
-                      //  alert(rowid);
+
 
                         var rowData = $('#list2').jqGrid ('getRowData', rowid);
 
