@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <title>Hello grid!!!!!!!!</title>
 
 <#include "/common/common.ftl">
-
-
     <script>
 
         $(function () {
+            //그리드 로딩..
+            loadGrid();
 
-            $( "#modifyDialog" ).dialog({
+            $("#modifyDialog").dialog({
                 autoOpen: false,
                 title: '수정',
                 modal: false,
@@ -34,18 +34,6 @@
                 } else {
                     $("#form1").submit();
                 }
-
-            });
-
-
-            //그리드 로딩..
-            loadGrid();
-
-            /*$(":file").filestyle({input: false});*/
-            $(".dropdown-menu li a").click(function () {
-
-                $(".btn:first-child").text($(this).text());
-                $(".btn:first-child").val($(this).text());
 
             });
 
@@ -104,45 +92,6 @@
 
             });
 
-
-            $("#uploadbutton").click(function () {
-                var form = $('form')[0];
-                var formData = new FormData(form);
-                $.ajax({
-                    url: '/fileupload',
-                    processData: false,
-                    contentType: false,
-                    data: formData,
-                    type: 'POST',
-                    success: function (result) {
-                        alert("업로드 성공!!");
-                    }
-                });
-            });
-
-            $("#file1").change(function () {
-                /*var fileName = $(this).val();
-
-                alert(fileName);*/
-
-
-                var form = $('form')[0];
-                var formData = new FormData(form);
-                $.ajax({
-                    url: '/tinkerbell/fileupload',
-                    processData: false,
-                    contentType: false,
-                    data: formData,
-                    type: 'POST',
-                    success: function (result) {
-                        alert("업로드 성공!!");
-                    }
-                });
-
-                //$(".filename").html(fileName);
-            });
-
-
             $("#btnPopupSubmit").on("click", function () {
 
                 $.ajax({
@@ -151,8 +100,8 @@
                     async: false,
                     data: {
                         rowid: $("#rowId").val(),
-                        query : $("#query").val(),
-                        query_answer : $("#query_answer").val()
+                        query: $("#query").val(),
+                        query_answer: $("#query_answer").val()
 
 
                     },
@@ -168,7 +117,7 @@
 
             });
 
-            $('input[id=query]').on('keydown', function(e) {
+            $('input[id=query]').on('keydown', function (e) {
                 if (e.which == 13) {
                     e.preventDefault();
 
@@ -178,25 +127,20 @@
                 }
             });
 
-            $('input[id=query_answer]').on('keydown', function(e) {
+            $('input[id=query_answer]').on('keydown', function (e) {
                 if (e.which == 13) {
                     e.preventDefault();
                     $("#btnPopupSubmit").trigger("click");
                 }
             });
 
+        });//onready End
 
 
-
-
-
-        });//onreadyEnd
-
-
-        function hasExtension(inputID, exts) {
+        /*function hasExtension(inputID, exts) {
             var fileName = document.getElementById(inputID).value;
             return (new RegExp('(' + exts.join('|').replace(/\./g, '\\.') + ')$')).test(fileName);
-        }
+        }*/
 
         function modifyButtonMaker(cellvalue, options, rowObject) {
             return "<button class='btnRowModify' id=" + rowObject.id + ">" + "수정" + "</button>"
@@ -207,6 +151,7 @@
         };
 
 
+        //그리드 로딩
         function loadGrid() {
 
             $("#list2").jqGrid({
@@ -237,14 +182,13 @@
                     root: "rows"
                 }, //Required for client side sorting
                 loadonce: true,
-                ondblClickRow: function(rowid)
-                {
-                    var rowData = $('#list2').jqGrid ('getRowData', rowid);
-                    var query= rowData.name;
-                    var query_answer= rowData.query_answer;
+                ondblClickRow: function (rowid) {
+                    var rowData = $('#list2').jqGrid('getRowData', rowid);
+                    var query = rowData.name;
+                    var query_answer = rowData.query_answer;
 
 
-                    $("#modifyDialog").dialog( "open" );
+                    $("#modifyDialog").dialog("open");
                     $("#query").val(query);
                     $("#query_answer").val(query_answer);
 
@@ -279,34 +223,23 @@
                     $(".btnRowModify").on("click", function () {
 
                         var rowid = $(this).attr("id");
-
                         $("#rowId").val(rowid);
-
-
-                        var rowData = $('#list2').jqGrid ('getRowData', rowid);
-
-                        var query= rowData.name;
-                        var query_answer= rowData.query_answer;
-
-
-                        $("#modifyDialog").dialog( "open" );
+                        var rowData = $('#list2').jqGrid('getRowData', rowid);
+                        var query = rowData.name;
+                        var query_answer = rowData.query_answer;
+                        $("#modifyDialog").dialog("open");
 
                         $("#query").val(query);
                         $("#query_answer").val(query_answer);
 
                     });
-
-
-
-
                 },
-                multiselect: 1
+                multiselect: true
                 //editable : 1
             });
 
-            /*  $('#list2').jqGrid('setGridParam', {sortorder: 'desc'});
-              $('#list2').jqGrid('sortGrid', 'id');
-  */
+            /*$('#list2').jqGrid('setGridParam', {sortorder: 'desc'});
+            $('#list2').jqGrid('sortGrid', 'id');*/
 
             $("#list2").jqGrid('navGrid', '#pager2',
                     {edit: false, add: false, del: false, search: true}, {}, {}, {},
@@ -327,23 +260,19 @@
                     }
             );
 
+        }//end of 그리드 로딩
+    </script>
+    <style>
 
-
+        .ui-dialog-title {
+            font-size: 10pt;
         }
 
+        .ui-state-default {
+            font-size: 10pt;
+        }
 
-
-    </script>
-<style>
-
-    .ui-dialog-title{
-        font-size: 10pt;
-    }
-    .ui-state-default{
-        font-size:10pt;
-    }
-
-</style>
+    </style>
 </head>
 <body>
 
@@ -384,12 +313,12 @@
         </div>
         <div class="row">
         <#if message??>
-            ${message}
+        ${message}
         </#if>
 
 
         <#if RequestParameters.message??>
-            ${RequestParameters.message}
+        ${RequestParameters.message}
         </#if>
 
         </div>
@@ -399,7 +328,7 @@
 
 
     <!--수정 다이얼로그-->
-    <div id ="modifyDialog" class="small" title = "Dialog Title goes here...">
+    <div id="modifyDialog" class="small" title="Dialog Title goes here...">
         <table>
             <colgroup>
                 <col width="100px;">
@@ -407,7 +336,7 @@
             </colgroup>
             <tr>
                 <td>
-                    <label>query&nbsp;&nbsp;  </label>
+                    <label>query&nbsp;&nbsp; </label>
                 </td>
                 <td>
                     <input type="text" width="500px" size="80" id="query" style="font-size: 9pt;">
@@ -416,7 +345,7 @@
             </tr>
             <tr>
                 <td>
-                    <label>query_answer&nbsp;&nbsp;  </label>
+                    <label>query_answer&nbsp;&nbsp; </label>
                 </td>
                 <td>
                     <input type="text" width="500px" size="80" id="query_answer" style="font-size: 9pt;">
@@ -426,17 +355,11 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <input type="button" id="btnPopupSubmit" value="저장"  class="ui-state-default">
+                    <input type="button" id="btnPopupSubmit" value="저장" class="ui-state-default">
                 </td>
 
             </tr>
         </table>
-
-
-
-
-
-
 
     </div>
 
