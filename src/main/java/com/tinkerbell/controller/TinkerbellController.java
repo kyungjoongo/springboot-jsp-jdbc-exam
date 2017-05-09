@@ -71,7 +71,7 @@ public class TinkerbellController {
      * @return
      */
     @PostMapping("/upload") // //new annotation since 4.3
-    public ModelAndView upload(@RequestParam("file") MultipartFile file, Model model,
+    public ModelAndView upload(@RequestParam("file") MultipartFile file,
                                RedirectAttributes redirectAttributes) {
 
 
@@ -79,12 +79,15 @@ public class TinkerbellController {
 
         tinkerbellDao.insertDataList(excelDataList);
 
-        model.addAttribute("message", "업로드성공");
+        ModelAndView mav=new ModelAndView();
+
+        mav.addObject("message", "업로드성공!");
+        mav.setViewName("redirect:" + "/tinkerbell/list");
 
 
        // return "/tinkerbell/list";
 
-        return new ModelAndView("redirect:" + "/tinkerbell/list?message=excelImport성공");
+        return mav;
     }
 
 
@@ -116,6 +119,36 @@ public class TinkerbellController {
 
         return JSONValue.toJSONString(map);
     }
+
+
+    @PostMapping("/update")
+    public @ResponseBody
+    String update(@RequestParam(value = "rowid", required = false) String rowid,
+                  @RequestParam(value = "query", required = false) String query,
+                  @RequestParam(value = "query_answer", required = false) String query_answer,
+                  Model model
+
+    ) {
+
+
+        Map<String, Object> map = new HashMap<String, Object>();
+
+
+        int result = tinkerbellDao.updateData(query,query_answer,rowid);
+
+
+        if (result > 0) {
+            model.addAttribute("message", "수정성공");
+        } else {
+            model.addAttribute("message", "수정실패");
+        }
+
+
+        map.put("result", result);
+
+        return JSONValue.toJSONString(map);
+    }
+
 
 
 

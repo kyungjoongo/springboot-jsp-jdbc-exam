@@ -29,7 +29,7 @@ public class TinkerbellDao {
             String query = (String) elementOne.get("query");
             String query_answer = (String) elementOne.get("query");
 
-            result = template.update("INSERT INTO test1 ( name, query_answer) VALUES ( ?, ?)", query, query_answer);
+            result += template.update("INSERT INTO test1 ( name, query_answer) VALUES ( ?, ?)", query, query_answer);
         }
 
 
@@ -42,6 +42,17 @@ public class TinkerbellDao {
         for ( String id : ids){
             result = template.update("delete from test1 where id=?", id);
         }
+
+        return result;
+    }
+
+    //updateData
+        public int updateData(String query, String query_answer, String id) {
+
+        int result= 0;
+
+        result = template.update("update test1 set name=?, query_answer=? where id=?",query,query_answer, id);
+
 
         return result;
     }

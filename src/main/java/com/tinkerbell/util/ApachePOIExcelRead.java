@@ -21,7 +21,7 @@ public class ApachePOIExcelRead {
 
 
     /**
-     * 엑셀파일로 부터 로우를 읽어 List<HashMap> 형태를 반환
+     * 엑셀파일로 부터 row를 읽어 List<HashMap> 형태를 반환
      *
      * @param file
      */
