@@ -170,6 +170,24 @@
 
             });
 
+            $('input[id=query]').on('keydown', function(e) {
+                if (e.which == 13) {
+                    e.preventDefault();
+
+                    $("#btnPopupSubmit").trigger("click");
+
+
+                }
+            });
+
+            $('input[id=query_answer]').on('keydown', function(e) {
+                if (e.which == 13) {
+                    e.preventDefault();
+                    $("#btnPopupSubmit").trigger("click");
+                }
+            });
+
+
 
 
 
@@ -381,6 +399,8 @@
 
     </div>
 
+
+    <!--수정 다이얼로그-->
     <div id ="modifyDialog" class="small" title = "Dialog Title goes here...">
         <table>
             <colgroup>
