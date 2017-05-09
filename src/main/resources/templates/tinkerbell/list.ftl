@@ -85,9 +85,6 @@
 
             $("#btnDelete").on("click", function () {
 
-
-
-
                 if (confirm("삭제하시겠습니까?")) {
                     var selRowIds = $("#list2").jqGrid('getGridParam', 'selarrrow');
 
@@ -99,7 +96,7 @@
                         data: {rowIds: selRowIds.toString()},
                         success: function (data) {
 
-                            alert("삭제성공")
+                            //alert("삭제성공")
                             //location.href = "/tinkerbell/list";
                             $('#list2').setGridParam({page: 1, datatype: "json"}).trigger('reloadGrid');
                         }
@@ -148,7 +145,36 @@
             });
 
 
-        });
+            $("#btnPopupSubmit").on("click", function () {
+
+                $.ajax({
+                    url: '/tinkerbell/update',
+                    type: 'post',
+                    async: false,
+                    data: {
+                        rowid: $("#rowId").val(),
+                        query : $("#query").val(),
+                        query_answer : $("#query_answer").val()
+
+
+                    },
+                    success: function (data) {
+
+                        // alert("수정성공");
+
+                        $('#modifyDialog').dialog('close');
+
+                        $('#list2').setGridParam({page: 1, datatype: "json"}).trigger('reloadGrid');
+                    }
+                })
+
+            });
+
+
+
+
+
+        });//onreadyEnd
 
 
         function hasExtension(inputID, exts) {
@@ -195,7 +221,7 @@
                     root: "rows"
                 }, //Required for client side sorting
                 loadonce: true,
-              /*  ondblClickRow: function(rowid)
+                ondblClickRow: function(rowid)
                 {
                     var rowData = $('#list2').jqGrid ('getRowData', rowid);
                     var query= rowData.name;
@@ -206,7 +232,8 @@
                     $("#query").val(query);
                     $("#query_answer").val(query_answer);
 
-                },*/
+
+                },
                 gridComplete: function () {
                     $("#list2").setGridParam({datatype: 'local'});
 
@@ -251,10 +278,9 @@
                         $("#query").val(query);
                         $("#query_answer").val(query_answer);
 
-
-
-
                     });
+
+
 
 
                 },
@@ -286,35 +312,6 @@
             );
 
 
-            /*
-
-            팝업 수정 ev
-             */
-            //btnPopupSubmit
-            $("#btnPopupSubmit").on("click", function () {
-
-                $.ajax({
-                    url: '/tinkerbell/update',
-                    type: 'post',
-                    async: false,
-                    data: {
-                        rowid: $("#rowId").val(),
-                        query : $("#query").val(),
-                        query_answer : $("#query_answer").val()
-
-
-                    },
-                    success: function (data) {
-
-                       // alert("수정성공");
-
-                        $('#modifyDialog').dialog('close');
-
-                        $('#list2').setGridParam({page: 1, datatype: "json"}).trigger('reloadGrid');
-                    }
-                })
-
-            });
 
         }
 
@@ -371,12 +368,12 @@
         </div>
         <div class="row">
         <#if message??>
-        ${message}
-
-
+            ${message}
         </#if>
-            <#if RequestParameters.message??>
-        ${RequestParameters.message}
+
+
+        <#if RequestParameters.message??>
+            ${RequestParameters.message}
         </#if>
 
         </div>
