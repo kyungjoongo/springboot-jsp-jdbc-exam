@@ -13,6 +13,16 @@
 
         $(function () {
 
+            //쿠키가 존재하는 경우.
+            if (  document.cookie !='' && document.cookie != 'undefined'){
+                $("#btnChangeTheme").val(document.cookie);
+                loadTheme(document.cookie);
+            }else{//쿠키가 존재 하지 않는 경우.........(기본값)
+                document.cookie= "green2";
+                $("#btnChangeTheme").val(document.cookie);
+                loadTheme(document.cookie);
+            }
+
             $( "#modifyDialog" ).dialog({
                 autoOpen: false,
                 title: '수정',
@@ -51,21 +61,25 @@
 
             });
 
-            //btnChangeTheme
+
             $("#btnChangeTheme").on("change", function () {
 
-                //alert($(this).attr("id"));
+                var selectedId = $("#btnChangeTheme option:selected").attr("id");
+                loadTheme(selectedId);
+            });
 
-                var selectId = $("#btnChangeTheme option:selected").attr("id");
 
-                if (selectId == 'green2') {
+
+            function loadTheme(selectedId){
+
+                if (selectedId == 'green2') {
                     loadjscssfile("/jquery-ui-1.12.1.green2/jquery-ui.theme.css", "css")
                     loadjscssfile("/jquery.jqGrid-4.6.0/css/ui.jqgrid.css", "css")
-                } else if (selectId == 'green') {
+                } else if (selectedId == 'green') {
                     loadjscssfile("/jquery-ui-1.12.1.green/jquery-ui.theme.css", "css") ////dy
                     loadjscssfile("/jquery.jqGrid-4.6.0/css/ui.jqgrid.css", "css") ////dy
 
-                } else if (selectId == 'red') {
+                } else if (selectedId == 'red') {
 
                     loadjscssfile("/jquery-ui-1.12.1.red/jquery-ui.theme.css", "css") ////dy
                     loadjscssfile("/jquery.jqGrid-4.6.0/css/ui.jqgrid.css", "css") ////dy
@@ -75,8 +89,8 @@
                     loadjscssfile("/jquery.jqGrid-4.6.0/css/ui.jqgrid.css", "css") ////dy
                 }
 
-
-            });
+                document.cookie= selectedId;
+            }
 
 
             $("#btnLogout").on("click", function () {
