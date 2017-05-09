@@ -9,8 +9,6 @@
 
     <script>
 
-
-
         $(function () {
 
             $( "#modifyDialog" ).dialog({
