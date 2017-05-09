@@ -13,16 +13,6 @@
 
         $(function () {
 
-            //쿠키가 존재하는 경우.
-            if (  document.cookie !='' && document.cookie != 'undefined'){
-                $("#selectChangeTheme").val(document.cookie);
-                loadTheme(document.cookie);
-            }else{//쿠키가 존재 하지 않는 경우.........(기본값)
-                document.cookie= "green2";
-                $("#selectChangeTheme").val(document.cookie);
-                loadTheme(document.cookie);
-            }
-
             $( "#modifyDialog" ).dialog({
                 autoOpen: false,
                 title: '수정',
@@ -61,25 +51,21 @@
 
             });
 
+            //btnChangeTheme
+            $("#btnChangeTheme").on("change", function () {
 
-            $("#selectChangeTheme").on("change", function () {
+                //alert($(this).attr("id"));
 
-                var selectedId = $("#selectChangeTheme option:selected").attr("id");
-                loadTheme(selectedId);
-            });
+                var selectId = $("#btnChangeTheme option:selected").attr("id");
 
-
-
-            function loadTheme(selectedId){
-
-                if (selectedId == 'green2') {
+                if (selectId == 'green2') {
                     loadjscssfile("/jquery-ui-1.12.1.green2/jquery-ui.theme.css", "css")
                     loadjscssfile("/jquery.jqGrid-4.6.0/css/ui.jqgrid.css", "css")
-                } else if (selectedId == 'green') {
+                } else if (selectId == 'green') {
                     loadjscssfile("/jquery-ui-1.12.1.green/jquery-ui.theme.css", "css") ////dy
                     loadjscssfile("/jquery.jqGrid-4.6.0/css/ui.jqgrid.css", "css") ////dy
 
-                } else if (selectedId == 'red') {
+                } else if (selectId == 'red') {
 
                     loadjscssfile("/jquery-ui-1.12.1.red/jquery-ui.theme.css", "css") ////dy
                     loadjscssfile("/jquery.jqGrid-4.6.0/css/ui.jqgrid.css", "css") ////dy
@@ -89,8 +75,8 @@
                     loadjscssfile("/jquery.jqGrid-4.6.0/css/ui.jqgrid.css", "css") ////dy
                 }
 
-                document.cookie= selectedId;
-            }
+
+            });
 
 
             $("#btnLogout").on("click", function () {
@@ -365,10 +351,8 @@
 
 <div class="container">
 
-
-
     Theme:
-    <select id="selectChangeTheme">
+    <select id="btnChangeTheme">
         <option id="green2">green2</option>
         <option id="green">green</option>
         <option id="gray">gray</option>
